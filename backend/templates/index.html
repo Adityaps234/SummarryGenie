@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Summarizer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>SummaryGenie</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Input Section -->
+        <div class="center-column">
+            <form action="/summarize" method="post" class="input-form">
+                <textarea name="document" id="documentInput" placeholder="Enter text to summarize...">{{ original_text }}</textarea>
+                <button type="submit">Summarize</button>
+            </form>
+
+            {% if summary %}
+            <!-- Summary Section -->
+            <div class="summary-box">
+                <h2>Summary</h2>
+                <p>{{ summary }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- History Section -->
+        <div class="history-column">
+            <h2>Summary History</h2>
+            <div id="historyList" class="history-list">
+                {% for original, summary in history %}
+                <div class="history-tab">
+                    <p><strong>Original:</strong> {{ original }}</p>
+                    <p><strong>Summary:</strong> {{ summary }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f8fa;
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    color: #444;
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    color: #e0f7fa !important; /* Light blue color */
+    text-align: center;
+    padding: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+
+/* Main Container */
+.main-container {
+    display: flex;
+    margin-top: 80px; /* Leave space for the header */
+    height: calc(100vh - 80px);
+    gap: 20px;
+}
+
+/* History Column */
+.history-column {
+    flex: 1;
+    background-color: #e5e7eb;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #d1d5db;
+}
+
+.history-column h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #3b82f6;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-tab {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.history-tab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Center Column */
+.center-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+textarea#documentInput {
+    width: 90%;
+    height: 250px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    resize: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #f7f8fa;
+    outline: none;
+}
+
+textarea#documentInput:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+/* Button Styles */
+button {
+    width: 160px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3b82f6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* Summary Box */
+.summary-box {
+    width: 90%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.summary-box h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #3b82f6;
+}
+
+/* Scrollbar Styling */
+.history-column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.history-column::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+}
+
+.history-column::-webkit-scrollbar-thumb:hover {
+    background-color: #9ca3af;
+}

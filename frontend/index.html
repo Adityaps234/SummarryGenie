@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Summarizer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <h1>SummaryGenie</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- History Column -->
+        <div class="history-column">
+            <h2>Summary History</h2>
+            <div id="historyList" class="history-list">
+                <!-- History items will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Center Column -->
+        <div class="center-column">
+            <textarea id="documentInput" placeholder="Enter text to summarize..."></textarea>
+            <button onclick="summarizeText()">Summarize</button>
+            <div class="summary-box" id="summaryBox">
+                <h2>Summary</h2>
+                <p id="summaryText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function summarizeText() {
+            const text = document.getElementById('documentInput').value;
+
+            // Fetch the summary from the backend
+            const response = await fetch('/summarize', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ document: text })
+            });
+
+            const data = await response.json();
+            const summary = data.summary;
+
+            // Display the summary
+            document.getElementById('summaryText').innerText = summary;
+
+            // Update history
+            const historyList = document.getElementById('historyList');
+            const historyItem = document.createElement('div');
+            historyItem.classList.add('history-tab');
+            historyItem.innerHTML = `<h4>Summary ${historyList.children.length + 1}</h4><p>${summary}</p>`;
+            historyList.appendChild(historyItem);
+        }
+    </script>
+</body>
+</html>
